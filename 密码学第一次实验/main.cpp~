@@ -4,6 +4,7 @@
 #include <cmath>
 using namespace std;
 
+
 string add(string , string) ;
 string mult(string , string);
 string multInverse(string);

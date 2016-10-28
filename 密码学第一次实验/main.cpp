@@ -41,12 +41,12 @@ const string multTable[] = {
 
 
 int main() {
-	cout<<"please input a generator: "<<endl;
-	cout<<">>>";
+	
+	int n1;
 	bool correctFlag2 = true;
 	do {
-		cin>>g;
-		g = chLenToMax(g,8);
+		n1 = 3;
+		g = chLenToMax(parseToBinary(n1),8);
 		if(!isFormat(g)) {
 			cout<<"the generator you input is unformat ! please input again"<<endl;
 			correctFlag2 = false;
@@ -64,54 +64,60 @@ int main() {
 		cout<<">>>";
 		cin>>op;
 		string a,b;
+		int n2,n3;
 		switch(op) {
 			case 0:
-				cout<<"please input two binary numbers: "<<endl;
+				cout<<"please input two numbers: "<<endl;
 				cout<<">>>";
-				cin>>a>>b;
-				a = chLenToMax(a , 8);
-				b = chLenToMax(b , 8);
+				cin>>n2>>n3;
+				a = chLenToMax(parseToBinary(n2) , 8);
+				b = chLenToMax(parseToBinary(n3) , 8);
 				if(isFormat(a) && isFormat(b)) 
-					cout<<a<<"+"<<b<<" : "<<add(a,b)<<endl;
+					cout<<n2<<"+"<<n3<<" : "<<parseToDec(add(a,b))<<endl;
 				else {
-					cout<<"the two binary numbers are unformat ! please restart again"<<endl;
+					cout<<"the two  numbers are unformat ! please restart again"<<endl;
 					cout<<">>>";
 				}
 				continue;
 			case 1:
-				cout<<"please input two binary numbers: "<<endl;
+				cout<<"please input two  numbers: "<<endl;
 				cout<<">>>";
-				cin>>a>>b;
-				a = chLenToMax(a , 8);
-				b = chLenToMax(b , 8);
+				cin>>n2>>n3;
+				a = chLenToMax(parseToBinary(n2) , 8);
+				b = chLenToMax(parseToBinary(n3) , 8);
 				if(isFormat(a) && isFormat(b)) 
-					cout<<a<<"*"<<b<<" : "<<mult(a,b)<<endl;
+					cout<<n2<<"*"<<n3<<" : "<<parseToDec(mult(a,b))<<endl;
 				else {
-					cout<<"the two binary numbers are unformat ! please restart again"<<endl;
+					cout<<"the two  numbers are unformat ! please restart again"<<endl;
 					cout<<">>>";
 				}
 				continue;
 			case 2:
-				cout<<"please input one binary numbers: "<<endl;
+				cout<<"please input one  numbers: "<<endl;
 				cout<<">>>";
-				cin>>a;
-				a = chLenToMax(a , 8);
+				cin>>n2;
+				a = chLenToMax(parseToBinary(n2) , 8);
 				if(isFormat(a)) 
-					cout<<"The multiplicative inverse of "<<a<<" is "<<multInverse(a)<<endl; 
+					cout<<"The multiplicative inverse of "<<n2<<" is "<<parseToDec(multInverse(a))<<endl; 
 				else {
-					cout<<"the  binary number is unformat ! please restart again"<<endl;
+					cout<<"the  number is unformat ! please restart again"<<endl;
 					cout<<">>>";
 				}
 				continue;
 			case 3:
-				cout<<"please input one binary numbers: "<<endl;
+				cout<<"please input a generator: "<<endl;
 				cout<<">>>";
-				cin>>a;
-				a = chLenToMax(a , 8);
+				cin>>n1;
+				g = chLenToMax(parseToBinary(n1),8);
+				setTable();
+				cout<<"please input one numbers: "<<endl;
+				cout<<">>>";
+				cin>>n2;
+				a = chLenToMax(parseToBinary(n2) , 8);
 				if(isFormat(a)) 
-					cout<<"The discrete logarithm of "<<a<<" is "<<discreteLogarithm(a)<<endl; 
+					cout<<"The discrete logarithm of "<<n2<<" is "<<discreteLogarithm(a)<<endl; 
 				else {
-					cout<<"the  binary number is unformat ! please restart again"<<endl;
+					cout<<"the  number is unformat ! please restart again"<<endl;
 					cout<<">>>";
 				}
 				continue;

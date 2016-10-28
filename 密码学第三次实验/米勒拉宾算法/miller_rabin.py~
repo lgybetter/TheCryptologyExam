@@ -1,0 +1,67 @@
+import random
+# (a * b) % c
+def mod_pro(a, b, n):
+  return a*b % n
+
+# a ^ b % c
+def mod(a, b, c):
+  if b == 1:
+    return a % c
+  a %= c
+  ret = 1
+  while b:
+    if b&1:
+      ret = mod_pro(ret,a,c)
+    a = mod_pro(a,a,c)
+    b >>= 1
+  return ret
+
+def check (a, n, m, k):
+    ret = mod(a, m, n)
+    last = ret
+    for i in range(0, k):
+        ret = mod_pro(ret, ret, n);
+        if (ret == 1 and last != 1 and last != n-1): return True
+        last = ret
+    if (ret != 1): return True
+    return False
+
+def is_prime(n, t):
+  if n < 2:
+    return False
+  if n == 2:
+    return True
+  k = 0
+  m = n - 1
+  while m&1 == 0:
+    m >>=1
+    k += 1
+  for i in range(0, t):
+    a = random.randint(0, n)
+    if(check(a,n,m,k)):
+      return False
+  return True
+
+while 1:
+  p = random.randint(2**100, 2**101)
+  if is_prime(p,20):
+    print p
+    break
+
+while 1:
+  q = random.randint(2**100, 2**101)
+  if is_prime(q,20):
+    print q
+    break
+
+print p * q
+
+
+
+    
+
+
+
+
+
+	

@@ -42,17 +42,23 @@ def is_prime(n, t):
       return False
   return True
 
+l = input()
+
 while 1:
-  p = random.randint(2**100, 2**101)
+  p = random.randint(2**l, 2**(l + 1))
   if is_prime(p,20):
     print p
     break
 
 while 1:
-  q = random.randint(2**100, 2**101)
+  q = random.randint(2**l, 2**(l + 1))
   if is_prime(q,20):
     print q
     break
 
 print p * q
+
+
+
+
 	
